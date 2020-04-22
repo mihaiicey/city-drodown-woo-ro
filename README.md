@@ -8,8 +8,8 @@ Tested up to: 5.3.3
 Stable tag: 1.0.0
 WC requires at least: 3.6
 WC tested up to: 3.8.1
-License: GPLv2 or later
-License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
+License: GPLv3 or later
+License URI: [http://www.gnu.org/licenses/gpl-3.0.html](http://www.gnu.org/licenses/gpl-3.0.html)
 
 This Plugin change Woocommerce City input into a dropdown, based on states. Works only with Romania country!
 
