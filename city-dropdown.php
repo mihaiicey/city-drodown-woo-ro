@@ -4,7 +4,7 @@
  * Plugin URI: https://dabex.eu/module/city-dropdown-woocommerce/
  * Description: This plugin helps you to transform the city field from your checkout page. It includes all cities from Romania, based on each state.
  * Version: 1.0.1
- * Author: Dabex
+ * Author: Daniel Florea
  * Author URI: https://dabex.eu
  * Text Domain: woo-city-dropdown-ro
  * License: GPLv2 or later
