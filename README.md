@@ -1,6 +1,6 @@
 
 === City Dropdown For Woocommerce ===
-Author: Dabex
+Author: Daniel Florea
 Author URL: https://dabex.eu
 Tags: woocommerce, states, cities, local government, dropdown, city, city select, cities select, city dropdown, cities dropdown, woocommerce city, woocommerce cities, Romania, orase Romania
 Requires at least: 4.0
