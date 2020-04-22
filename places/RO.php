@@ -3,7 +3,7 @@
 /**
  * City From Romania
  *
- * @author  BetterWoo | * @version 1.0.0
+ * @author  Daniel Florea | * @version 1.0.0
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 global $places;
