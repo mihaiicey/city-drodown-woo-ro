@@ -30,3 +30,7 @@ WordPress 5.0  or greater
 Woocommerce 3.8 or greater
 PHP version 7.2 or greater
 MySQL version 5.0 or greater
+
+== Screenshots ==
+1. Checkout Page with City Dropdown
+
