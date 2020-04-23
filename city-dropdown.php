@@ -3,8 +3,8 @@
  * Plugin Name: City Dropdown for Woocommerce
  * Plugin URI: https://dabex.eu/module/city-dropdown-woocommerce/
  * Description: This plugin helps you to transform the city field from your checkout page. It includes all cities from Romania, based on each state.
- * Version: 1.0.1
- * Author: Daniel Florea
+ * Version: 1.0.3
+ * Author: Dabex
  * Author URI: https://dabex.eu
  * Text Domain: woo-city-dropdown-ro
  * License: GPLv2 or later
@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) or die( 'You can not access this file directly!' );
  */
 if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
 
-    class cd_4_wc_states_places {
+    class CD_4_WC_States_Places {
 
         const VERSION = '1.0.0';
         private $states;
@@ -53,9 +53,9 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
          * WC States init
          */
         public function init_places() {
-            add_filter( 'woocommerce_billing_fields', array( $this, 'cd_4_wc_billing_fields' ), 10, 2 );
-            add_filter( 'woocommerce_shipping_fields', array( $this, 'cd_4_wc_shipping_fields' ), 10, 2 );
-            add_filter( 'woocommerce_form_field_city', array( $this, 'cd_4_wc_form_field_city' ), 10, 4 );
+            add_filter( 'woocommerce_billing_fields', array( $this, 'wc_billing_fields' ), 10, 2 );
+            add_filter( 'woocommerce_shipping_fields', array( $this, 'wc_shipping_fields' ), 10, 2 );
+            add_filter( 'woocommerce_form_field_city', array( $this, 'wc_form_field_city' ), 10, 4 );
 
             add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
         }
@@ -65,7 +65,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
          * @param mixed $states
          * @return mixed
          */
-        public function  cd_4_wc_states($states) {
+        public function  wc_states($states) {
             //get countries allowed by store owner
             $allowed = $this->get_store_allowed_countries();
 
@@ -86,7 +86,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
          * @param mixed $country
          * @return mixed
          */
-        public function cd_4_wc_billing_fields( $fields, $country ) {
+        public function wc_billing_fields( $fields, $country ) {
             $fields['billing_city']['type'] = 'city';
 
             return $fields;
@@ -98,7 +98,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
          * @param mixed $country
          * @return mixed
          */
-        public function cd_4_wc_shipping_fields( $fields, $country ) {
+        public function wc_shipping_fields( $fields, $country ) {
             $fields['shipping_city']['type'] = 'city';
 
             return $fields;
@@ -112,7 +112,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
          * @param string $value
          * @return mixed
          */
-        public function cd_4_wc_form_field_city($field, $key, $args, $value ) {
+        public function wc_form_field_city($field, $key, $args, $value ) {
             // Do we need a clear div?
             if ( ( ! empty( $args['clear'] ) ) ) {
                 $after = '<div class="clear"></div>';
@@ -239,7 +239,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
         public function load_scripts() {
             if ( is_cart() || is_checkout() || is_wc_endpoint_url( 'edit-address' ) ) {
 
-                $city_select_path = $this->get_plugin_url() . 'js/place-select.js';
+                $city_select_path = $this->get_plugin_url() . '/assets/js/place-select.js';
                 wp_enqueue_script( 'wc-city-select', $city_select_path, array( 'jquery', 'woocommerce' ), self::VERSION, true );
 
                 $places = json_encode( $this->get_places() );
@@ -287,11 +287,11 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
     /**
      * Instantiate class
      */
-    $GLOBALS['wc_states_places'] = new cd_4_wc_states_places();
+    $GLOBALS['wc_states_places'] = new CD_4_WC_States_Places();
 };
-add_filter( 'woocommerce_default_address_fields', 'dbx_reorder_checkout_fields' );
+add_filter( 'woocommerce_default_address_fields', 'cd_4_wc_reorder' );
   
-function cd_4_wc__reorder_checkout_fields( $fields ) {
+function cd_4_wc_reorder( $fields ) {
   $fields['state']['priority'] = 48;
   $fields['city']['priority'] = 49;
  
